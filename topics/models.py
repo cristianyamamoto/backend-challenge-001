@@ -7,7 +7,7 @@ class Topic(TimestampModel):
     title = models.CharField(max_length=128, blank=False)
     name = models.CharField(max_length=128)
     description = models.CharField(max_length=256, blank=True)
-    url_name = models.SlugField(max_length=64, unique=True, default='')
+    url_name = models.SlugField(max_length=64, unique=True, db_index=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE)
