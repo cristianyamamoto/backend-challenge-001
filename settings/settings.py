@@ -91,7 +91,7 @@ INSTALLED_APPS = [
     # Applications
     'accounts',
     'topics.apps.TopicsConfig',
-    # 'posts.apps.PostsConfig',
+    'posts.apps.PostsConfig',
     # 'comments.apps.CommentsConfig'
 ]
 

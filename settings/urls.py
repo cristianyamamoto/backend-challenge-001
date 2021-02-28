@@ -10,7 +10,7 @@ from django.contrib import admin
 from helpers.health_check_view import health_check
 
 from rest_framework.routers import DefaultRouter
-# from rest_framework_nested.routers import NestedSimpleRouter
+from rest_framework_nested.routers import NestedSimpleRouter
 
 from topics.views import TopicViewSet
 # from posts.views import PostViewSet
