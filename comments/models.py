@@ -1,13 +1,13 @@
 from django.db import models
 from helpers.models import TimestampModel
-from topics.models import Topic
+from posts.models import Post
 
 
-class Post(TimestampModel):
+class Comment(TimestampModel):
     title = models.CharField(max_length=128, blank=False)
-    content = models.TextField(blank=True)
-    topic = models.ForeignKey(
-        Topic, related_name='topic',
+    content = models.TextField(blank=False)
+    post = models.ForeignKey(
+        Post, related_name='post',
         on_delete=models.CASCADE)
 
     class Meta:

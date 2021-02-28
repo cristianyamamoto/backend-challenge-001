@@ -92,7 +92,7 @@ INSTALLED_APPS = [
     'accounts',
     'topics.apps.TopicsConfig',
     'posts.apps.PostsConfig',
-    # 'comments.apps.CommentsConfig'
+    'comments.apps.CommentsConfig'
 ]
 
 SITE_ID = 1
