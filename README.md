@@ -116,6 +116,7 @@ In order to test the application functionalities we can use Postman.
 
 To test a POST method that creates topics, posts and comments, it was created an authorization token for permission purposes.
 On the body tab, we write a raw JSON text to pass the desired information for each entity. Below follow some examples.
+
 Creating a Topic Example (endpoint: `/topics/`):
 ```
 {
