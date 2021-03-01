@@ -10,10 +10,11 @@ class Topic(TimestampModel):
     url_name = models.SlugField(max_length=64, unique=True, db_index=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        related_name='topics',
         on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['updated_at']
+        ordering = ['-updated_at']
 
     # Shows up in the admin list
     def __str__(self):
