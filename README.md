@@ -107,3 +107,55 @@ We want to have a behavior similar to *Reddit (not necessarily equal)*, so ideal
 If you have any doubts on how to implement these structures, check the
 [Nested Routers documentation](https://github.com/alanjds/drf-nested-routers) and the 
 [lookup field section on the Routers documentation](https://www.django-rest-framework.org/api-guide/routers/#simplerouter).
+
+## Postman Tests
+
+In order to test the application functionalities we can use Postman.
+
+### POST method
+
+To test a POST method that creates topics, posts and comments, it was created an authorization token for permission purposes.
+On the body tab, we write a raw JSON text to pass the desired information for each entity. Below follow some examples.
+Creating a Topic Example (endpoint: `/topics/`):
+```
+{
+ "title": "Topico 1",
+ "name": "Topico 1",
+ "description": "Descrição do Topico 1",
+ "url_name": "topico1"
+}
+```
+
+Creating a Post Example (endpoint: `/topics/topico1/posts/`):
+```
+{
+ "title": "Post 1 do topico 1",
+ "content": "Conteúdo do post 1 do Topico 1"
+}
+```
+
+Creating a Comment Example (endpoint: `/topics/topico1/posts/1/comments/`):
+```
+{
+ "title": "Comment 1 do Post 1 do topico 1",
+ "content": "Conteúdo do comment 1 do post 1 do Topico 1"
+}
+```
+
+### GET method
+
+After creating topics, posts and comments, we can use the GET method to retrieve the information of each one.
+
+* Here follow some examples of endpoints that respect the URLs behavior said previously:
+    * /topics - Retrieves all Topics
+    * /topics/topico1 - Retrieves details of a Topic
+    * /topics/topico1/posts - Retrieves Posts of a Topic
+    * /topics/topico1/posts/1 - Retrieves details of a Post
+    * /topics/topico1/posts/1/comments - Retrieves Comments of a Post
+    * /topics/topico1/posts/1/comments/1 - Retrieves details of a Comment
+	
+### PATCH and DELETE method
+
+Also, we can test if only the author of a topic, post or comment can modify or delete it.
+For example, if we use the endpoint `/topics/topico1/posts/1/comments/1/`, we can modify or delete the comment if the authorization token belongs to the author.
+
