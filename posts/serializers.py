@@ -1,15 +1,22 @@
 from rest_framework import serializers
-from comments.serializers import CommentSerializer
+from rest_auth.serializers import UserDetailsSerializer
 from posts.models import Post
+from topics.models import Topic
 
 
-class PostSerializer(serializers.ModelSerializer):
-    
-    author = serializers.ReadOnlyField(source='author.username')
-    topic = serializers.ReadOnlyField(source='topic.url_name')
-    comments = CommentSerializer(read_only=True, many=True)
+class CreatePostSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Post
         fields = ['id', 'created_at', 'updated_at', 'title',
-                 'content', 'topic', 'author', 'comments']
+                 'content']
+
+class RetrievePostSerializer(serializers.ModelSerializer):
+    
+    author = UserDetailsSerializer(read_only=True)
+    topic = serializers.ReadOnlyField(source='topic.url_name')
+    
+    class Meta:
+        model = Post
+        fields = ['id', 'created_at', 'updated_at', 'title',
+                 'content', 'topic', 'author']
